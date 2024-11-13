@@ -2,25 +2,29 @@ import { Text, View } from "react-native";
 import { useState, useEffect } from "react";
 
 var text_st = {
-    fontSize: 20,
+    fontSize: 60,
     padding: 10
 }
 
 export default function Index() {
-    const [d, setD] = useState(new Date());
+    const [hh, sethh] = useState("");
+    const [mm, setmm] = useState("");
+    const [ss, setss] = useState("");
 
     useEffect(function () {
         setInterval(run_everysec, 1000);
     }, []);
 
     function run_everysec() {
-        var now = new Date();
-        setD(now);
+        var d = new Date();
+        sethh(d.getHours());
+        setmm(d.getMinutes());
+        setss(d.getSeconds());
     }
 
     return (
         <View style={{ alignItems: 'center' }} >
-            <Text style={text_st}>{d.toString()}</Text>
+            <Text style={text_st}>{hh}:{mm}:{ss}</Text>
         </View>
     )
 }
