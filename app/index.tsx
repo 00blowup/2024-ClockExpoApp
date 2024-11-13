@@ -1,26 +1,26 @@
-import { Text, View, Button } from "react-native";
+import { Text, View } from "react-native";
 import { useState, useEffect } from "react";
 
 var text_st = {
-    width: 100,
-    fontSize: 30,
-    backgroundColor: 'lightgray',
-    padding: 10, margin: 20
+    fontSize: 20,
+    padding: 10
 }
 
 export default function Index() {
-    const [val, setVal] = useState(0);
+    const [d, setD] = useState(new Date());
 
     useEffect(function () {
-        console.log("this is side effect", val)
+        setInterval(run_everysec, 1000);
     }, []);
+
+    function run_everysec() {
+        var now = new Date();
+        setD(now);
+    }
 
     return (
         <View style={{ alignItems: 'center' }} >
-            <Text style={text_st}>{val}</Text>
-            <Button title="Count Up" onPress={function(){setVal(val+1)}}/>
-            <View style={{ height: 10 }}/>
-            <Button title="Count Down" onPress={function(){setVal(val-1)}}/>
+            <Text style={text_st}>{d.toString()}</Text>
         </View>
     )
 }
