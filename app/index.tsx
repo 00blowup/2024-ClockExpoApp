@@ -13,7 +13,7 @@ export default function Index() {
 
     useEffect(function () {
         console.log("this is side effect", val)
-    });
+    }, []);
 
     return (
         <View style={{ alignItems: 'center' }} >
